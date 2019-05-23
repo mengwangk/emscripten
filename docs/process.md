@@ -44,16 +44,17 @@ When:
 
 Requirements:
 
- * GitHub CI is green. (Currently, that includes good coverage for Linux, but
-   nothing else - we should keep trying to find resources to do better here.)
+ * emscripten-releases build CI is green on all OSes for the desired hash
+   (where the hash is the git hash in the emscripten-releases repo, which then
+   specifies through DEPS exactly which revisions to use in all other repos).
+ * GitHub CI is green.
 
 How:
 
  * Ask on irc if there are any concerns.
- * The emscripten, emscripten-fastcomp, and emscripten-fastcomp-clang repos
-   should each be updated: the emscripten-version.txt file in each, and a git
-   tag (with the simple version number).
- * A tag should also be done in the binaryen repo.
+ * Open a PR for the emsdk to update emscripten-releases-tags.txt, adding the
+   version and the hash.
+ * Tag the emscripten and binaryen repos.
 
 
 Major version update (1.X.Y to 1.(X+1).0)
@@ -65,7 +66,7 @@ When:
 
 Requirements:
 
- * GitHub CI is green.
+ * All the requirements for a minor update.
  * No major change recently landed.
  * No major recent regressions have been filed.
  * All tests pass locally for the person doing the update, including the main

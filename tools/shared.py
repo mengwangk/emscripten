@@ -520,9 +520,20 @@ def get_emscripten_version(path):
   return open(path).read().strip().replace('"', '')
 
 
+# The emscripten-version.txt file contains "dev" by default, indicating this is
+# a development version (probably a git clone of the emscripten repo). The
+# emsdk will update the file here with the actual version number when it
+# installs emscripten.
 EMSCRIPTEN_VERSION = get_emscripten_version(path_from_root('emscripten-version.txt'))
-parts = [int(x) for x in EMSCRIPTEN_VERSION.split('.')]
-EMSCRIPTEN_VERSION_MAJOR, EMSCRIPTEN_VERSION_MINOR, EMSCRIPTEN_VERSION_TINY = parts
+if '.' in EMSCRIPTEN_VERSION:
+  # A numeric X.Y.Z version number.
+  parts = [int(x) for x in EMSCRIPTEN_VERSION.split('.')]
+  EMSCRIPTEN_VERSION_MAJOR, EMSCRIPTEN_VERSION_MINOR, EMSCRIPTEN_VERSION_TINY = parts
+else:
+  # "dev", a git hash, or some other version indicator.
+  EMSCRIPTEN_VERSION_MAJOR = EMSCRIPTEN_VERSION
+  EMSCRIPTEN_VERSION_MINOR = EMSCRIPTEN_VERSION_TINY = '0'
+
 # For the Emscripten-specific WASM metadata section, follows semver, changes
 # whenever metadata section changes structure
 # NB: major version 0 implies no compatibility

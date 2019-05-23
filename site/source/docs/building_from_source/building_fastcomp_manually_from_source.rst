@@ -117,11 +117,7 @@ Run ``emcc -v`` to check if the branches are synchronized.
 Version numbers
 ++++++++++++++++
 
-Bisecting across multiple git trees can be hard. We use version numbers to help synchronize points between them:
-
-- `emscripten-version.txt <https://github.com/emscripten-core/emscripten/blob/master/emscripten-version.txt>`__ in Emscripten
-- `emscripten-version.txt <https://github.com/emscripten-core/emscripten-fastcomp/blob/master/emscripten-version.txt>`__ in fastcomp (llvm)
-- `emscripten-version.txt <https://github.com/emscripten-core/emscripten-fastcomp-clang/blob/master/emscripten-version.txt>`__ in fastcomp-clang (clang)
+Bisecting across multiple git trees can be hard. We use git tags of the version numbers to help synchronize points between them.
 
 Version numbers are typically ``X.Y.Z`` where:
 

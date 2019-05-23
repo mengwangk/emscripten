@@ -93,10 +93,6 @@ SDK builds are enabled by enabling the ``sdkbuild`` tag. This is done through th
 Build version
 -------------
 
-The documentation version should match the Emscripten version for the current build. For a general site build this will be the latest tagged release as defined in `Emscripten version <https://github.com/emscripten-core/emscripten/blob/incoming/emscripten-version.txt>`_. For an SDK build it will be the Emscripten version for the SDK.
-
-The version and release information is used in a few places in the documentation, for example :ref:`emscripten-authors`.
-
 The version information is defined in **conf.py** — see variables ``version`` and ``release``. These variables can be overridden by setting new values in the ``SPHINXOPTS`` environment variable. For example, to update the ``release`` variable through the command line on Windows: ::
 
   # Set SPHINXOPTS
