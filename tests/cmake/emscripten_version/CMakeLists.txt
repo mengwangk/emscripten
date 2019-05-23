@@ -3,7 +3,11 @@
 if ("${EMSCRIPTEN_VERSION}" VERSION_GREATER 1.38.5)
 	message(STATUS "Emscripten version is at least 1.38.6")
 else()
+if ("${EMSCRIPTEN_VERSION}" STREQUAL "dev")
+	message(STATUS "Emscripten version is dev")
+else()
 	message(FATAL_ERROR "EMSCRIPTEN_VERSION is not present, or is older than 1.38.6: '${EMSCRIPTEN_VERSION}'")
+endif()
 endif()
 
 # A particular gotcha about Emscripten version testing: do not use the following code:

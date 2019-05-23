@@ -519,9 +519,11 @@ if '.' in EMSCRIPTEN_VERSION:
   parts = [int(x) for x in EMSCRIPTEN_VERSION.split('.')]
   EMSCRIPTEN_VERSION_MAJOR, EMSCRIPTEN_VERSION_MINOR, EMSCRIPTEN_VERSION_TINY = parts
 else:
-  # "dev", a git hash, or some other version indicator.
-  EMSCRIPTEN_VERSION_MAJOR = EMSCRIPTEN_VERSION
-  EMSCRIPTEN_VERSION_MINOR = EMSCRIPTEN_VERSION_TINY = '0'
+  # "dev", a git hash, or some other version indicator. We can't report a valid
+  # numeric version number here, so report 0.0.0.
+  EMSCRIPTEN_VERSION_MAJOR = 0
+  EMSCRIPTEN_VERSION_MINOR = 0
+  EMSCRIPTEN_VERSION_TINY = 0
 
 # For the Emscripten-specific WASM metadata section, follows semver, changes
 # whenever metadata section changes structure
